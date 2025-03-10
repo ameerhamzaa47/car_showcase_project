@@ -21,7 +21,7 @@ const CarCard = ({car}:CarCardProps) => {
     <>
       <div className='flex flex-col p-6  justify-center bg-blue-50 items-start text-black bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl group:'>
         <div className='w-full flex justify-between items-start gap-2'>
-            <h2 className='text-[22px] leading-[26px] font-bold capitalize'>  {model} {make} Toyota Corolla</h2>
+            <h2 className='text-[22px] leading-[26px] font-bold capitalize'>  {model} {make} Toyota corolla</h2>
         </div>
 
         <p className='flex mt-6 text-[32px] font-semibold'>
