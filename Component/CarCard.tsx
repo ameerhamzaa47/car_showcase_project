@@ -11,9 +11,9 @@ interface CarCardProps {
 }
 
 const CarCard = ({car}:CarCardProps) => {
-    const {citymanufacturer_name,make_model_id,city_mpg,drive,transmission, year, make,make_model, model} = car;
+    const {make_model_id,city_mpg,drive,transmission, year, make,make_model, model} = car;
     const carRent=calculateCarRent(make_model_id,year)
-    // console.log(year,'and',city_mpg,'and',drive);
+    console.log(year,'and',city_mpg,'and',drive);
 
     const [isOpen, setIsOpen] = useState(false)
     
@@ -21,7 +21,7 @@ const CarCard = ({car}:CarCardProps) => {
     <>
       <div className='flex flex-col p-6  justify-center bg-blue-50 items-start text-black bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl group:'>
         <div className='w-full flex justify-between items-start gap-2'>
-            <h2 className='text-[22px] leading-[26px] font-bold capitalize'>  {model} {make} Toyota corolla</h2>
+            <h2 className='text-[22px] leading-[26px] font-bold capitalize'>  {model? model : "Toyota corolla" } {make} </h2>
         </div>
 
         <p className='flex mt-6 text-[32px] font-semibold'>
