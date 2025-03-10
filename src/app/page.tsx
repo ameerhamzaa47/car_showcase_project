@@ -16,9 +16,6 @@ interface SearchParams {
   model?: string;
 }
 
-interface PageProps {
-  searchParams: SearchParams;
-}
 
 const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
   const allCars = await fetchCars({
