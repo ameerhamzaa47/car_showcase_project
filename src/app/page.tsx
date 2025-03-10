@@ -1,101 +1,99 @@
 import Image from "next/image";
+import Hero from "../../Component/Hero";
+import SearchBar from "../../Component/SearchBar";
+import CustomFilter from "../../Component/CustomFilter";
+import { fetchCars } from "../../utils";
+import CarCard from "../../Component/CarCard";
+import { fuels, yearsOfProduction } from "../../constants";
+import ShowMore from "../../Component/ShowMore";
 
-export default function Home() {
+
+interface SearchParams {
+  manufacturer?: string;
+  year?: number;
+  fuel?: string;
+  limit?: number;
+  model?: string;
+}
+
+const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
+  const allCars = await fetchCars({
+    manufacturers: searchParams.manufacturer || '',
+    year: searchParams.year || 2022,
+    fuel: searchParams.fuel || '',
+    limit: searchParams.limit || 10,
+    model: searchParams.model || '',
+  });
+  console.log("data g",allCars);
+  
+  const isDataEmpty= !Array.isArray(allCars) || allCars.length<1 || !allCars;
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="overflow-hidden">
+      <Hero/>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <div className="mt-12 sm:px-16 px-6 py-4 max-w-[1440px] mx-auto" id="discover">
+        <div className="flex flex-col items-start justify-start gap-y-2.5 text-black-100">
+          <h1 className="text-4xl font-extrabold">Car Catalogue</h1>
+          <p>Explore the cars you might like</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      <div className="mt-12 w-full flex-between items-center flex-wrap gap-5">
+        <SearchBar/>
+
+        <div className="flex justify-start flex-wrap items-center gap-2">
+            <CustomFilter title="fuel" options={fuels}/>
+            <CustomFilter title="year" options={yearsOfProduction}/>
+        </div>
+      </div>
+
+      
+
+
+{
+  Array.isArray(allCars?.trims) && allCars.trims.length > 0 ? (
+    <section>
+      <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14">
+        {allCars.trims.map((car:any,index:number) => (
+          <CarCard car={car} key={index} />
+        ))}
+      </div>
+      <ShowMore
+      pageNumber={(searchParams.limit || 10)/10}
+      isNext={(searchParams.limit || 10)> allCars.length}
+      />
+    </section>
+  ) : (
+    <div className="mt-16 flex justify-center items-center flex-col gap-2">
+      <h2 className="text-black text-xl font-bold">Oops, no results!</h2>
+      <p>{allCars?.message || "No car trims found."}</p>
     </div>
+  )
+}
+
+
+
+            {/* {
+              allCars?(
+                <section>
+                  <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14">
+                    {allCars?.map((car:any)=> (
+                    <CarCard  /> ))}
+                  </div>
+                </section>
+              ):(
+                <div className="mt-16 flex justify-center items-center flex-col gap-2">
+                  <h2 className="text-black text-xl font-bold">Oops, no results!</h2>
+                  <p>{allCars?.message}</p>
+                </div>
+              )
+            } */}
+
+
+      </div>
+    </main>
+
+
   );
 }
+
+export default Page;
