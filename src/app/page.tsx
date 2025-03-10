@@ -16,7 +16,14 @@ interface SearchParams {
   model?: string;
 }
 
-const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
+interface PageProps {
+  searchParams: SearchParams;
+}
+
+const Page = async ({ searchParams }: PagePropsTypes of property 'searchParams' are incompatible.
+  Type 'SearchParams' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+Next.js build worker exited with code: 1 and signal: null
+Error: Command "npm run build" exited with 1) => {
   const allCars = await fetchCars({
     manufacturers: searchParams.manufacturer || '',
     year: searchParams.year || 2022,
