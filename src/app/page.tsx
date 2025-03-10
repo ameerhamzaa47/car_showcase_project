@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Hero from "../../Component/Hero";
 import SearchBar from "../../Component/SearchBar";
 import CustomFilter from "../../Component/CustomFilter";
@@ -6,6 +5,7 @@ import { fetchCars } from "../../utils";
 import CarCard from "../../Component/CarCard";
 import { fuels, yearsOfProduction } from "../../constants";
 import ShowMore from "../../Component/ShowMore";
+import { CarProps } from "../../types";
 
 
 interface SearchParams {
@@ -24,9 +24,8 @@ const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
     limit: searchParams.limit || 10,
     model: searchParams.model || '',
   });
-  console.log("data g",allCars);
   
-  const isDataEmpty= !Array.isArray(allCars) || allCars.length<1 || !allCars;
+  //  !Array.isArray(allCars) || allCars.length<1 || !allCars;
   return (
     <main className="overflow-hidden">
       <Hero/>
@@ -53,7 +52,7 @@ const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
   Array.isArray(allCars?.trims) && allCars.trims.length > 0 ? (
     <section>
       <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14">
-        {allCars.trims.map((car:any,index:number) => (
+        {allCars.trims.map((car: CarProps, index: number) => (
           <CarCard car={car} key={index} />
         ))}
       </div>

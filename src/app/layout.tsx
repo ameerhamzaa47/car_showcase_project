@@ -4,15 +4,6 @@ import "./globals.css";
 import Navbar from "../../Component/Navbar";
 import Footer from "../../Component/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Car Hub",
