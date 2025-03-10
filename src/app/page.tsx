@@ -20,7 +20,7 @@ interface PageProps {
   searchParams: SearchParams;
 }
 
-const Page = async ({ searchParams }: PageProps) => {
+const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
   const allCars = await fetchCars({
     manufacturers: searchParams.manufacturer || '',
     year: searchParams.year || 2022,
