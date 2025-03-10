@@ -29,7 +29,7 @@ const SearchManufacturer = ({manufacturer,setManufacturer}:SearchManufacturerPro
                 className="w-full h-[48px] bg-gray-200 pl-12 p-4 rounded-l-full max-sm:rounded-full bg-light-white outline-none cursor-pointer text-sm"
                 placeholder="Volkswagen"
                 displayValue={(manufacturer:string) => manufacturer}
-                onChange={(e:any)=>setQuery(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
                 />
 
                 <Transition
