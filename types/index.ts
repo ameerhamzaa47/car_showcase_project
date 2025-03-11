@@ -48,3 +48,9 @@ export interface ShowMoreProps {
     pageNumber: number;
     isNext:boolean;
 }
+
+
+export interface ReviewProps {
+    name?: string;
+    date?: string;
+  }

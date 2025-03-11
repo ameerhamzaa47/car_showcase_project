@@ -6,6 +6,8 @@ import CarCard from "../../Component/CarCard";
 import { fuels, yearsOfProduction } from "../../constants";
 import ShowMore from "../../Component/ShowMore";
 import { CarProps } from "../../types";
+import Testimonial from "../../Component/Testimonial";
+import FAQs from "../../Component/FAQs";
 
 
 interface SearchParams {
@@ -88,8 +90,9 @@ const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
               )
             } */}
 
-
       </div>
+      <Testimonial/>
+      <FAQs/>
     </main>
 
 
