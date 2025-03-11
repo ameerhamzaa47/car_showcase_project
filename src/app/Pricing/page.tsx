@@ -4,14 +4,14 @@ const page = () => {
   return (
     <>
 
-    <section className='bg-gray-100 text-black rounded-2xl flex justify-between items-center mx-10 my-10 p-8 gap-9'>
+    <section className='bg-gray-100 text-black rounded-2xl flex flex-col lg:flex-row md:flex-col justify-between items-center mx-10 my-10 p-8 gap-9'>
         <div className=' mb-10 text-center md:text-left'>
             <h3 className='font-semibold text-gray-500 tracking-wide'>PRICING PLANS</h3>
             <h1 className='text-4xl md:text-3xl font-bold leading-tight mt-2'>Explore Our Pricing Plan Solutions</h1>
             <p className=' text-lg md:text-base mt-4 max-w-lg mx-auto md:mx-0'>Discover pricing options designed to accommodate practices of all sizes.</p>
         </div>
 
-        <div className="bg-gradient-to-r from-[#22303D] to-[#2D3E50] text-white p-6 rounded-lg shadow-lg flex flex-col w-80 justify-between transform transition-transform hover:scale-105">
+        <div className="bg-gradient-to-r from-[#22303D]  to-[#2D3E50] text-white p-6 rounded-lg shadow-lg flex flex-col w-80 justify-between transform transition-transform hover:scale-105">
             <div>
             <h3 className="text-xl font-semibold mb-2">Standard Plan</h3>
             <p className="text-gray-300 mb-4">Best for small Family</p>
