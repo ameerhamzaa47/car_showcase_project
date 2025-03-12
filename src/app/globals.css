@@ -50,7 +50,12 @@
   position: relative;
   text-align: center;
   padding-top: 5%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5%;
 }
+
+
 
 .mySwiper .swiper-pagination-bullet {
   width: 12px;
@@ -140,5 +145,6 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: Poppin;
   }
 }
