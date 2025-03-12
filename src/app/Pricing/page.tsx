@@ -50,7 +50,7 @@ const page = () => {
                     <div>
                         <h3 className="text-2xl font-bold mb-2">Premium Plan</h3>
                         <p className="text-[#e0f7fa] mb-4">Best for Large Family</p>
-                        <p className="text-white text-5xl mb-4">{isMonthly? '$199':'$249'}<span className='text-lg -ml-1'> / {isMonthly? 'month':'year'}</span></p>
+                        <p className="text-white text-5xl mb-4">{isMonthly? '$199':'$279'}<span className='text-lg -ml-1'> / {isMonthly? 'month':'year'}</span></p>
                         <hr className="border-gray-300 mb-4" />
                         <ul className="mb-6 space-y-3">
                             <li className="flex items-center"><i className="fa-solid fa-check mr-2"></i> Best Practice</li>
