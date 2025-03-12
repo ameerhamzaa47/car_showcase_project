@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 
-export default function middelware(request:any) {
+export default function middelware(request:NextRequest) {
                 return NextResponse.redirect(new URL("/SignIn",request.url))
 }
 
