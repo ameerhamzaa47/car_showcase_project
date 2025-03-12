@@ -2,7 +2,7 @@
 import React from 'react'
 import { useState } from 'react';
 
-const page = () => {
+const Page = () => {
     const [isMonthly, setIsMonthly] = useState(true);
 
     const handleToggle = () => {
@@ -70,4 +70,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
