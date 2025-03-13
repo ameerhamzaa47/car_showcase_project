@@ -21,7 +21,7 @@ const Testimonial = () => {
 
 <div className="px-8 pt-12 lg:px-16">
          <h3 className="font-semibold text-xl text-gray-700 text-center sm:text-left">Thousands Of Trusted Clients</h3>
-         <h1 className="font-bold text-3xl sm:text-4xl my-4 text-gray-900 text-center sm:text-left" style={{fontFamily:''}}>Don't take our word for it, see what our clients say</h1>
+         <h1 className="font-bold text-3xl sm:text-4xl my-4 text-gray-900 text-center sm:text-left" style={{fontFamily:''}}>Dont take our word for it, see what our clients say</h1>
          <p className="text-base text-gray-600 w-full sm:w-3/5 text-justify leading-relaxed mx-auto sm:mx-0">
            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur non illo eaque minus nam soluta facere,
            consequuntur corrupti eos repudiandae. Lorem ipsum dolor sit amet consectetur.
